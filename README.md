@@ -62,7 +62,7 @@ Feel free to contribute and enhance WebFrames! 🌐🛠️
 
 ## Contributors
 
-- [Your Name](https://github.com/rafaelsinosak)
+- [Rafael Sinosaki](https://github.com/rafaelsinosak)
 
 ## License
 
