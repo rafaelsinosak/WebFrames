@@ -1,20 +1,18 @@
-const _ = require ('lodash')
+const _ = require('lodash')
 const BillingCycle = require('./billingCycle')
 
 BillingCycle.methods(['get', 'post', 'put', 'delete'])
-BillingCycle.updateOptions({ new: true, runValidators: true})
-
+BillingCycle.updateOptions({new: true, runValidators: true})
 
 BillingCycle.after('post', sendErrorsOrNext).after('put', sendErrorsOrNext)
 
 function sendErrorsOrNext(req, res, next){
   const bundle = res.locals.bundle
 
-  if(bundle.errors){
+  if(bundle.erros){
     var errors = parseErrors(bundle.errors)
     res.status(500).json({errors})
-  }
-  else{
+  } else{
     next()
   }
 }
@@ -25,12 +23,11 @@ function parseErrors(nodeRestfulErrors){
   return errors
 }
 
-BillingCycle.route('count', function(req, res, next){
-  BillingCycle.count(function(error, value){
-    if (error){
-      res.status(500).json({errors: [error]})
-    }
-    else{
+BillingCycle.route('count', function(req, res, next) {
+  BillingCycle.count(function(error, value) {
+    if(error) {
+      res.status(500).json({erros: [error]})
+    } else {
       res.json({value})
     }
   })
